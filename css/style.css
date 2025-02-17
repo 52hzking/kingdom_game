@@ -1,0 +1,115 @@
+
+@font-face {
+    font-family: SweiGothicCJKtc-Regular;
+    src: url(https://cdn.jsdelivr.net/gh/max32002/swei-gothic@2.129/WebFont/CJK%20TC/SweiGothicCJKtc-Regular.woff2) format("woff2")
+    , url(https://cdn.jsdelivr.net/gh/max32002/swei-gothic@2.129/WebFont/CJK%20TC/SweiGothicCJKtc-Regular.woff) format("woff");
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+:root {
+    --main-aspect-ratio: 9 / 16;
+    
+    --dialogue-color: rgb(82, 68, 56);
+    --dialogue-border-color: #a67961;
+    --dialogue-bg-color: #f1d3bd;
+    
+--dialogue-black-stroke-width: 5px;
+}
+
+body {
+    font-family: SweiGothicCJKtc-Regular;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #04F404;
+    overflow-y: hidden;
+} 
+
+.dialogue-container {
+    height: 100%;
+    aspect-ratio: var(--main-aspect-ratio);
+    position: absolute;
+    z-index: 99;
+}
+
+.dialogue-black-stroke-img{
+z-index: 0;
+-webkit-filter: drop-shadow(var(--dialogue-black-stroke-width) var(--dialogue-black-stroke-width) 0 black)
+              drop-shadow(-var(--dialogue-black-stroke-width) -var(--dialogue-black-stroke-width) 0 black);
+filter: drop-shadow(var(--dialogue-black-stroke-width) var(--dialogue-black-stroke-width) 0 black) 
+      drop-shadow(calc(0px - var(--dialogue-black-stroke-width)) calc(0px - var(--dialogue-black-stroke-width)) 0 black);
+}
+
+.dialogue-box{
+    margin: 20px;
+    height: 100%;
+}
+.dialogue-card-stroke{
+    position: relative;
+    top: 50%;
+    background-color: #d4a186;
+    border: 15px solid #d4a186;
+    border-radius: 2rem;
+}
+.dialogue-card-stroke::before{
+content:'';
+    position: absolute;
+    height:calc(100% + var(--dialogue-black-stroke-width)*2);
+  width: calc(100% + var(--dialogue-black-stroke-width)*2);
+    background-color: black;
+border: 15px solid black;
+border-radius: 2rem;
+top: calc(-1rem - var(--dialogue-black-stroke-width));
+left: calc(-1rem - var(--dialogue-black-stroke-width));
+z-index:-1;
+}
+.dialogue-card{
+    background-color: var(--dialogue-border-color);
+    border: 3px solid var(--dialogue-border-color);
+    border-radius: 1.5rem;
+}
+
+.dialogue-card>.dialogue-card-body {
+    border-radius: calc(2rem - 10px);
+    background: var(--dialogue-bg-color);
+    margin: 0;
+    padding:20px;
+}
+
+.dialogue-card-body{
+    color: var(--dialogue-color);
+    min-height: calc(4 * 1.5em); /* Assuming line-height is 1.5em */
+    line-height: 1.5em;  /* Set line-height */
+}
+
+.dialogue-card-body .title{
+    font-size: 18px;
+    font-weight: 600;
+    margin: 5px 0;
+}
+
+.dialogue-card-stroke::after{
+    font-family: "Font Awesome 6 Free";
+    content: '\f0d7';
+    position: absolute;
+    color: var(--dialogue-border-color);
+    font-weight: 900;
+    animation: fadeIn 2s steps(1, end) 1s;
+    animation-iteration-count: infinite;
+    right: 15px;
+    bottom: 10px;
+font-size:2em;
+}
