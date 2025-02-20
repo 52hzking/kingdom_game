@@ -4,6 +4,12 @@
 <link rel="stylesheet" href="css/style.css">
 
 
+<div id="control-panel" class="control-panel hide" style="padding-top: 100px;">
+    <input type="text" onchange="update_content('dialogue-title',this)">
+    <textarea type="text" onchange="update_content('dialogue-body',this)"></textarea>
+</div>
+<button class="control-panel-btn" onclick="toggle_panel('control-panel')"><i class="fa-solid fa-gear"></i></button>
+
 <div class="dialogue-container">
     <img class="dialogue-gudie" style="height: 100%;position:fixed;z-index:100;" src="img/dialogue_guide.PNG" />
    <img class="dialogue-black-stroke-img" style="height: 100%;position:fixed;" src="img/dialogue_guide.PNG" />
@@ -14,12 +20,12 @@
          <div class="dialogue-card-stroke">
              <div class="dialogue-card wobble">
                  <div class="dialogue-card-body">
-                   <div class="title">Title</div>
-                     option1<br>
-                     option2<br>
-                     option3<br>
+                    <div id="dialogue-title" class="title">Title</div>
+                    <div id="dialogue-body" class="body" style="margin-left: 20px;"></div>
                  </div>
              </div>
          </div>
      </div>
  </div>
+
+<script src="script/global.js"></script>
