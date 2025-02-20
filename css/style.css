@@ -23,6 +23,8 @@
     --dialogue-color: rgb(82, 68, 56);
     --dialogue-border-color: #a67961;
     --dialogue-bg-color: #f1d3bd;
+
+    --dialogue-border-radius: 1rem;
     
 --dialogue-black-stroke-width: 5px;
 }
@@ -62,7 +64,7 @@ filter: drop-shadow(var(--dialogue-black-stroke-width) var(--dialogue-black-stro
     top: 50%;
     background-color: #d4a186;
     border: 15px solid #d4a186;
-    border-radius: 2rem;
+    border-radius: var(--dialogue-border-radius);
 }
 .dialogue-card-stroke::before{
 content:'';
@@ -71,7 +73,7 @@ content:'';
   width: calc(100% + var(--dialogue-black-stroke-width)*2);
     background-color: black;
 border: 15px solid black;
-border-radius: 2rem;
+border-radius: calc(var(--dialogue-border-radius) + var(--dialogue-black-stroke-width));
 top: calc(-1rem - var(--dialogue-black-stroke-width));
 left: calc(-1rem - var(--dialogue-black-stroke-width));
 z-index:-1;
@@ -79,11 +81,11 @@ z-index:-1;
 .dialogue-card{
     background-color: var(--dialogue-border-color);
     border: 3px solid var(--dialogue-border-color);
-    border-radius: 1.5rem;
+    border-radius: calc(var(--dialogue-border-radius)/2 + 3px)
 }
 
 .dialogue-card>.dialogue-card-body {
-    border-radius: calc(2rem - 10px);
+    border-radius: calc(var(--dialogue-border-radius)/2);
     background: var(--dialogue-bg-color);
     margin: 0;
     padding:20px;
@@ -112,4 +114,40 @@ z-index:-1;
     right: 15px;
     bottom: 10px;
 font-size:2em;
+}
+
+.control-panel{
+    height:100vh;
+    width:300px;
+    background: white;
+    position: absolute;
+    left: 0;
+    display: block;
+    z-index: 1000;
+    padding: 0 20px;
+}
+
+.control-panel.hide{
+    height:0;
+    width:0;
+    display: none;
+}
+
+.control-panel-btn{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px;
+    font-size: 20px;
+    background: rgb(56, 56, 56);
+    border: 1px solid rgb(0, 0, 0);
+    color: white;
+    border-radius: 3px;
+    z-index: 1001;
+}
+.control-panel input,
+.control-panel textarea{
+    width: 100%;
+    padding: 5px 10px;
+    margin-bottom: 20px;
 }
